@@ -1,19 +1,23 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import {getAuth,GoogleAuthProvider} from "firebase/auth"
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAm2j5QCRCCJlRX0r1qBG_be1bXdXSRdyY",
-  authDomain: "stackoverflow-3f0d8.firebaseapp.com",
-  projectId: "stackoverflow-3f0d8",
-  storageBucket: "stackoverflow-3f0d8.appspot.com",
-  messagingSenderId: "76298589116",
-  appId: "1:76298589116:web:26ce6feaf0025dbdd511b9",
-  measurementId: "G-LDJE2JW8YE",
+  apiKey: "AIzaSyAbm3BCL9DUsFOyWaL3V1tUAt_iXc5m3JQ",
+  authDomain: "stackoverflow-clone-df564.firebaseapp.com",
+  projectId: "stackoverflow-clone-df564",
+  storageBucket: "stackoverflow-clone-df564.appspot.com",
+  messagingSenderId: "975937350162",
+  appId: "1:975937350162:web:0ef98b5d1b0371535386cb",
+  measurementId: "G-4T71WQHQC8"
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
-// const db = firebaseApp.firestore();
-const auth = getAuth();
-const provider = new GoogleAuthProvider();
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+export const auth= getAuth();
+export const provider=new GoogleAuthProvider()
 
-export { auth, provider };
-// export default db;

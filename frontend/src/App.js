@@ -1,23 +1,22 @@
-import "./App.css";
+import React, { useEffect } from 'react'
+import Header from './components/Header/Header'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from "react-router-dom";
-import StackOverflow from "./components/StackOverflow";
-import Header from "./components/Header";
-import AddQuestion from "./components/AddQuestion";
-import ViewQuestion from "./components/ViewQuestion";
-import Auth from "./components/Auth";
-import { useDispatch, useSelector } from "react-redux";
+import StackOverflow from "./components/StackOverflow"
+import Question from './components/Add-Question/Question'
+import ViewQuestion from "./components/ViewQuestion"
+import Auth from "./components/Auth"
+import { useDispatch, useSelector } from 'react-redux'
 import { login, logout, selectUser } from "./feature/userSlice";
-import { useEffect } from "react";
-import { auth } from "./firebase";
+import { auth } from "./firebase"
 
-function App() {
-  const user = useSelector(selectUser);
-  const dispatch = useDispatch();
+
+const App = () => {
+  const user = useSelector(selectUser)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -33,43 +32,42 @@ function App() {
       } else {
         dispatch(logout());
       }
-      // console.log(authUser);
+      console.log(authUser);
     });
   }, [dispatch]);
 
-  const PrivateRoute = ({ component: Component, ...rest }) => (
-    <Route
-      {...rest}
-      render={(props) =>
-        user ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/auth",
-              state: {
-                from: props.location,
-              },
-            }}
-          />
-        )
-      }
-    />
-  );
+
+  // const PrivateRoute = ({ component: Component, ...rest }) => (
+  //   <Route
+  //     {...rest}
+  //     render={(props) =>
+  //       user ? <Component {...props} />
+  //         : <Redirect
+  //           to="/auth" //{{
+  //         //     pathname: "/auth",
+  //         //     state: {
+  //         //       from: props.location,
+  //         //     },
+  //         //   }}
+  //         />
+  //     }
+  //   />
+  // );
 
   return (
-    <div className="App">
+    <div>
       <Router>
         <Header />
         <Switch>
+          {/* <Route exact path={user ? "/auth":"/"} component={user ? Auth : StackOverflow } /> */}
           <Route exact path="/auth" component={Auth} />
-          <PrivateRoute exact path="/" component={StackOverflow} />
-          <PrivateRoute exact path="/add-question" component={AddQuestion} />
-          <PrivateRoute exact path="/question" component={ViewQuestion} />
+          <Route exact path="/" component={StackOverflow} />
+          <Route exact path="/add-question" component={Question} />
+          <Route exact path="/question" component={ViewQuestion} />
         </Switch>
       </Router>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Sidebar from "./Sidebar";
-import "./css/index.css";
-import Main from "./Main";
-import axios from "axios";
+import React, { useEffect, useState } from 'react'
+import "./css/index.css"
+import Sidebar from './Sidebar'
+import Main from './Main'
+import axios from 'axios'
 
 function Index() {
   const [questions, setQuestions] = useState([]);
@@ -16,14 +16,15 @@ function Index() {
     }
     getQuestion();
   }, []);
+
   return (
-    <div className="stack-index">
-      <div className="stack-index-content">
-        <Sidebar />
-        <Main questions={questions} />
-      </div>
+    <div className='stack-index'>
+        <div className="stack-index-content">
+          <Sidebar />
+          <Main questions={questions} />
+        </div>
     </div>
-  );
+  )
 }
 
-export default Index;
+export default Index

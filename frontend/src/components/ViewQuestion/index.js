@@ -1,17 +1,17 @@
-import React from "react";
-import Sidebar from "../StackOverflow/Sidebar";
-import "./index.css";
-import MainQuestion from "./MainQuestion";
+import React from 'react'
+import "../StackOverflow/css/index.css"
+import Sidebar from '../StackOverflow/Sidebar'
+import MainQuestion from './MainQuestion'
 
-function Index() {
+const index = () => {
   return (
-    <div className="stack-index">
-      <div className="stack-index-content">
-        <Sidebar />
-        <MainQuestion />
-      </div>
+    <div className='stack-index'>
+        <div className="stack-index-content">
+          <Sidebar />
+          <MainQuestion />
+        </div>
     </div>
-  );
+  )
 }
 
-export default Index;
+export default index
